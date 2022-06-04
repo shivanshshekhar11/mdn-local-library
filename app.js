@@ -2,7 +2,11 @@ var createError = require('http-errors');
 var express = require('express');
 
 var mongoose = require('mongoose');
-var mongoDB = "mongodb+srv://lib-designer:local-lib@cluster0.pskq5.mongodb.net/local_library?retryWrites=true&w=majority";
+
+// Set up mongoose connection
+var dev_db_url = "mongodb+srv://lib-designer:local-lib@cluster0.pskq5.mongodb.net/local_library?retryWrites=true&w=majority"
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
 
 mongoose.connect(mongoDB,{useNewUrlParser:true,useUnifiedTopology:true});
 
